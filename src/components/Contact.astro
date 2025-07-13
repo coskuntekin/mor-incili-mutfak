@@ -1,0 +1,72 @@
+---
+// src/components/Contact.astro
+---
+
+<section id="contact" class="py-20 px-6 bg-white">
+  <div class="container mx-auto max-w-2xl">
+    <h2 class="text-4xl font-serif text-center mb-12">İletişime Geçin</h2>
+    <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+      <input type="hidden" name="form-name" value="contact" />
+      <div>
+        <label for="name" class="block mb-2 text-sm font-medium text-text-light"
+          >İsim</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full p-3 bg-background rounded-md border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent transition"
+        />
+      </div>
+      <div>
+        <label
+          for="email"
+          class="block mb-2 text-sm font-medium text-text-light">E-posta</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full p-3 bg-background rounded-md border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent transition"
+        />
+      </div>
+      <div>
+        <label
+          for="phone"
+          class="block mb-2 text-sm font-medium text-text-light"
+          >Telefon (Opsiyonel)</label
+        >
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          class="w-full p-3 bg-background rounded-md border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent transition"
+        />
+      </div>
+      <div>
+        <label
+          for="message"
+          class="block mb-2 text-sm font-medium text-text-light"
+          >Mesajınız</label
+        >
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          class="w-full p-3 bg-background rounded-md border border-gray-200 focus:ring-2 focus:ring-primary focus:border-transparent transition"
+        ></textarea>
+      </div>
+      <div class="text-center">
+        <button
+          type="submit"
+          class="bg-primary text-text-main font-bold py-3 px-8 rounded-lg shadow-md hover:bg-opacity-80 transition-all duration-300 transform hover:scale-105"
+        >
+          Mesaj Gönder
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

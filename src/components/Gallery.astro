@@ -1,0 +1,52 @@
+---
+// src/components/Gallery.astro
+
+const cakeImages = [
+  {
+    src: "https://placehold.co/600x800/FADADD/4B5563?text=Düğün+Pastası",
+    alt: "Zarif düğün pastası",
+  },
+  {
+    src: "https://placehold.co/600x800/A0C4FF/4B5563?text=Doğum+Günü+Pastası",
+    alt: "Yaratıcı doğum günü pastası",
+  },
+  {
+    src: "https://placehold.co/600x800/FFF7F0/4B5563?text=Kapkek+Kulesi",
+    alt: "Çeşitli kapkeklerden kule",
+  },
+  {
+    src: "https://placehold.co/600x800/FADADD/4B5563?text=Sanatsal+Tasarım",
+    alt: "Sanatsal pasta tasarımı",
+  },
+  {
+    src: "https://placehold.co/600x800/A0C4FF/4B5563?text=Kutlama+Pastası",
+    alt: "Özel kutlama pastası",
+  },
+  {
+    src: "https://placehold.co/600x800/FFF7F0/4B5563?text=Benzersiz+Lezzet",
+    alt: "Benzersiz lezzetli pasta",
+  },
+];
+---
+
+<section id="gallery" class="py-20 px-6 bg-white">
+  <div class="container mx-auto">
+    <h2 class="text-4xl font-serif text-center mb-12">Kreasyonlarımız</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        cakeImages.map((cake) => (
+          <div class="group overflow-hidden rounded-lg shadow-lg">
+            <img
+              src={cake.src}
+              alt={cake.alt}
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+              loading="lazy"
+              width="600"
+              height="800"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

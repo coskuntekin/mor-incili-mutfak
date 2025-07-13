@@ -1,0 +1,33 @@
+---
+// src/components/NavBar.astro
+
+const navLinks = [
+  { href: "#home", label: "Anasayfa" },
+  { href: "#gallery", label: "Galeri" },
+  { href: "#about", label: "Hakkımızda" },
+  { href: "#contact", label: "İletişim" },
+];
+---
+
+<header class="sticky top-0 z-50 bg-background/80 backdrop-blur-sm shadow-sm">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="#home" class="text-xl font-serif font-bold text-text-main">
+      Mor İncili Mutfak
+    </a>
+    <ul class="hidden md:flex space-x-8">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-text-light hover:text-primary transition-colors duration-300"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <!-- Mobile menu could be added here -->
+  </nav>
+</header>
