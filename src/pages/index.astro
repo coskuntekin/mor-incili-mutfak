@@ -16,8 +16,34 @@ import Contact from "../components/Contact.astro";
     <Contact />
   </main>
   <footer class="bg-background py-6 text-center text-text-light">
-    <p>
-      © {new Date().getFullYear()} Mor İncili Mutfak. Tüm Hakları Saklıdır.
-    </p>
+    <div class="flex flex-col items-center gap-2">
+      <p>
+        © {new Date().getFullYear()} Mor İncili Mutfak. Tüm Hakları Saklıdır.
+      </p>
+      <div class="flex gap-4 justify-center mt-2">
+        <a
+          href="https://instagram.com/morincilimutak"
+          target="_blank"
+          rel="noopener"
+          class="hover:text-primary transition">Instagram</a
+        >
+        <a
+          href="https://wa.me/905551112233"
+          target="_blank"
+          rel="noopener"
+          class="hover:text-primary transition">WhatsApp</a
+        >
+        <a
+          href="mailto:info@morincilimutak.com"
+          class="hover:text-primary transition">E-posta</a
+        >
+      </div>
+      <div class="mt-2">
+        <a
+          href="/privacy-policy"
+          class="underline hover:text-primary transition">Gizlilik Politikası</a
+        >
+      </div>
+    </div>
   </footer>
 </BaseLayout>

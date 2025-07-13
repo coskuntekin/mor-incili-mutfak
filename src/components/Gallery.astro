@@ -1,6 +1,4 @@
 ---
-// src/components/Gallery.astro
-
 const cakeImages = [
   {
     src: "https://placehold.co/600x800/FADADD/4B5563?text=Düğün+Pastası",
@@ -34,19 +32,77 @@ const cakeImages = [
     <h2 class="text-4xl font-serif text-center mb-12">Kreasyonlarımız</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {
-        cakeImages.map((cake) => (
-          <div class="group overflow-hidden rounded-lg shadow-lg">
-            <img
-              src={cake.src}
-              alt={cake.alt}
-              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
-              loading="lazy"
-              width="600"
-              height="800"
-            />
+        cakeImages.map((cake, idx) => (
+          <div
+            class="group relative overflow-hidden rounded-2xl shadow-lg bg-background transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl animate-fade-in"
+            style={`animation-delay: ${idx * 100}ms`}
+            tabindex="0"
+          >
+            <button
+              type="button"
+              class="focus:outline-none w-full h-full"
+              onclick={`document.getElementById('modal-img').src='${cake.src}';document.getElementById('modal-img').alt='${cake.alt}';document.getElementById('gallery-modal').classList.remove('hidden');`}
+              aria-label="Büyüt"
+              style="width:100%;height:100%;"
+            >
+              <img
+                src={cake.src}
+                alt={cake.alt}
+                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:rotate-1"
+                loading="lazy"
+                width="600"
+                height="800"
+              />
+              <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span class="text-white text-lg font-semibold px-4 text-center drop-shadow-lg">
+                  {cake.alt}
+                </span>
+              </div>
+            </button>
           </div>
         ))
       }
     </div>
+    <div
+      id="gallery-modal"
+      class="hidden fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center"
+    >
+      <div class="relative">
+        <button
+          type="button"
+          class="absolute top-2 right-2 text-white text-3xl font-bold focus:outline-none"
+          onclick="document.getElementById('gallery-modal').classList.add('hidden');"
+          aria-label="Kapat">&times;</button
+        >
+        <img
+          id="modal-img"
+          src=""
+          alt=""
+          class="max-h-[80vh] max-w-[90vw] rounded-lg shadow-2xl border-4 border-white"
+        />
+      </div>
+    </div>
+    <style>
+      @keyframes fade-in {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade-in {
+        animation: fade-in 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+      }
+    </style>
+    <script type="text/javascript" is:inline>
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          document.getElementById("gallery-modal").classList.add("hidden");
+        }
+      });
+    </script>
   </div>
 </section>

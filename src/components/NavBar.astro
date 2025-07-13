@@ -2,10 +2,10 @@
 // src/components/NavBar.astro
 
 const navLinks = [
-  { href: "#home", label: "Anasayfa" },
-  { href: "#gallery", label: "Galeri" },
-  { href: "#about", label: "Hakkımızda" },
-  { href: "#contact", label: "İletişim" },
+  { href: "#home", label: "Ana Sayfa" },
+  { href: "#gallery", label: "Kreasyonlarımızı Gör" },
+  { href: "#about", label: "Biz Kimiz?" },
+  { href: "#contact", label: "Bize Ulaşın" },
 ];
 ---
 
@@ -20,7 +20,7 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="text-text-light hover:text-primary transition-colors duration-300"
+              class="text-text-light hover:text-primary transition-colors duration-300 nav-link"
             >
               {link.label}
             </a>
@@ -28,6 +28,59 @@ const navLinks = [
         ))
       }
     </ul>
-    <!-- Mobile menu could be added here -->
+    <div class="md:hidden">
+      <button
+        id="mobile-menu-button"
+        aria-label="Menüyü Aç/Kapat"
+        class="text-text-main focus:outline-none"
+      >
+        <svg
+          width="28"
+          height="28"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <div
+        id="mobile-menu"
+        class="hidden absolute right-6 top-16 bg-background rounded-lg shadow-lg py-4 px-6 z-50"
+      >
+        <ul class="flex flex-col space-y-4">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-text-light hover:text-primary transition-colors duration-300 nav-link"
+                  onclick="document.getElementById('mobile-menu').classList.add('hidden');"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <script type="text/javascript" is:inline>
+        const btn = document.getElementById("mobile-menu-button");
+        const menu = document.getElementById("mobile-menu");
+        btn?.addEventListener("click", () => {
+          menu?.classList.toggle("hidden");
+        });
+        // Optional: Close menu on outside click
+        document.addEventListener("click", (e) => {
+          if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.add("hidden");
+          }
+        });
+      </script>
+    </div>
   </nav>
 </header>
